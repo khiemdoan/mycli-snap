@@ -63,12 +63,12 @@ confinement: strict
 parts:
   mycli:
     plugin: python
-    source: .
-    stage-packages:
+    python-packages:
       - mycli
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version $(mycli --version | cut -d " " -f 2)
+      snapcraftctl set-version $(curl -fsSL https://pypi.org/pypi/mycli/json | \
+        python3 -c "import sys, json; print(json.load(sys.stdin)['info']['version'])")
 
 apps:
   mycli:
