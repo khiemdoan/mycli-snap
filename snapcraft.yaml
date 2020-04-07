@@ -1,10 +1,9 @@
 name: mycli
-version: latest
-version-script: cat $SNAPCRAFT_STAGE/version
+adopt-info: mycli
 summary: mycli is a command line interface for MySQL, MariaDB, and Percona.
 description: |+
   mycli is a command line interface for MySQL, MariaDB, and Percona with auto-completion and syntax highlighting.
-  
+
   Usage
 
   $ mycli --help
@@ -69,7 +68,7 @@ parts:
       - mycli
     override-prime: |
       snapcraftctl prime
-      echo $(mycli --version | cut -d " " -f 2) > $SNAPCRAFT_STAGE/version
+      snapcraftctl set-version $(mycli --version | cut -d " " -f 2)
 
 apps:
   mycli:
