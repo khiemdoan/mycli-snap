@@ -66,8 +66,8 @@ parts:
     source: .
     stage-packages:
       - mycli
-    override-prime: |
-      snapcraftctl prime
+    override-pull: |
+      snapcraftctl pull
       snapcraftctl set-version $(mycli --version | cut -d " " -f 2)
 
 apps:
