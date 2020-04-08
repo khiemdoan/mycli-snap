@@ -65,6 +65,8 @@ parts:
     plugin: python
     python-packages:
       - mycli
+    build-packages:
+      - libssl-dev
     override-pull: |
       snapcraftctl pull
       snapcraftctl set-version $(ls ../python-packages/mycli* | cut -f3 -d"/" | cut -f2 -d"-")
