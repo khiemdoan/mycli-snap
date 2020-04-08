@@ -67,8 +67,7 @@ parts:
       - mycli
     override-pull: |
       snapcraftctl pull
-      snapcraftctl set-version $(curl -fsSL https://pypi.org/pypi/mycli/json | \
-        python3 -c "import sys, json; print(json.load(sys.stdin)['info']['version'])")
+      snapcraftctl set-version $(ls ../python-packages/mycli* | cut -f3 -d"/" | cut -f2 -d"-")
 
 apps:
   mycli:
